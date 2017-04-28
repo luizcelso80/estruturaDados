@@ -67,15 +67,51 @@ void imprimeCircular(No* l){
 
 No* insereCircular(No* l, int v){
 	No* n = (No*) malloc(sizeof(No));
+	n->info = v;
 	if(l == NULL){
-		n->info = v;
 		n->prox = n;
 		n->ant = n;
+		l = n;
 	}else{
 		n->prox = l->prox;
-		l->prox->ant = novo;
+		l->prox->ant = n;
 		n->ant = l;
 		l->prox = n;
 	}
+	return l;
+}
+
+No* retiraCircular(No* l, int v){
+	No* tmp = l;
+	if(l == NULL) return l;
+
+	do{
+		if(tmp->info == v){
+			tmp->ant->prox = tmp->prox;
+			tmp->prox->ant = tmp->ant;
+			l = tmp->prox;
+			break;
+		}
+		tmp = tmp->prox;
+	}while(tmp != l);
+	free(tmp);
+	return l;
+}
+
+No* retiraCircular2(No* l, int v){
+	No* tmp = l;
+
+	if(tmp == NULL) return l;
+
+	do{
+		tmp = tmp->prox;
+	}while(tmp != l && tmp->info != v);
+
+	if(tmp->info != v) return l;
+
+	if(tmp == l) l = tmp->prox;
+	tmp->prox->ant = tmp->ant;
+	tmp->ant->prox = tmp->prox;
+	free(tmp);
 	return l;
 }
