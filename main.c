@@ -29,10 +29,10 @@ int main(void){
 	imprimeCircular(l);
 	printf("\n\n");
 
-	/*l = retiraCircular2(l,23);
-	l = retiraCircular2(l,56);*/
+	l = retiraCircular2(l,23);
+	l = retiraCircular2(l,56);
 
-	//imprimeCircular(l);
+	imprimeCircular(l);
 	printf("\n\n");
 	
 	return 0;
