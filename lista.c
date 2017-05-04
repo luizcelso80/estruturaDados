@@ -116,7 +116,7 @@ No* retiraCircular2(No* l, int v){
 	return l;
 }
 
-char josephus(No* l, int corte){
+char * josephus(No* l, int corte){
 	No* tmp = l;
 	int conta = 1;
 	
