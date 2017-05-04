@@ -61,7 +61,7 @@ void imprime(){
 	printf("\n\n--> Soldados do Circulo:");
 	do {
        	printf("\nNome: %s",andarilho->nome);
-       	andarilho=andarilho->prev;
+       	andarilho=andarilho->next;
     }while (andarilho != inicio);
     printf("\n");
 }
@@ -108,7 +108,7 @@ void josephus(int lim){
 
 			tmp->next->prev = tmp->prev;
 			if(inicio == tmp) inicio = tmp->next;
-			printf("O soldado %s morreu!\n", tmp->nome );
+			printf("O soldado %s vai esperar ajuda!\n", tmp->nome );
 			tmp = tmp->next;
 			free(ret);
 		}else{
@@ -117,6 +117,7 @@ void josephus(int lim){
 			c++;
 		}
 	}
+	printf("O soldado %s foi buscar ajuda!!\n", inicio->nome );
 }
 
 
@@ -126,7 +127,7 @@ int main(){
 	lerArquivo();
 	imprime();  
 	josephus(3);
-	printf("O soldado %s foi salvo\n", inicio->nome );
+	
  
   return TRUE;
 }
