@@ -98,22 +98,18 @@ int getQuantidade(struct soldado *lista){
 
 void josephus(int lim){
 	int c = 1;
-	struct soldado *tmp = inicio;
 	while(inicio->next != inicio){
 		if(c == lim){
 			c = 1;
-			struct soldado *ret = tmp;
-			
-			tmp->prev->next = tmp->next;
-
-			tmp->next->prev = tmp->prev;
-			if(inicio == tmp) inicio = tmp->next;
-			printf("O soldado %s vai esperar ajuda!\n", tmp->nome );
-			tmp = tmp->next;
-			free(ret);
+			struct soldado *ret = inicio->next;
+			inicio->prev->next = inicio->next;
+			inicio->next->prev = inicio->prev;
+			//if(inicio == tmp) inicio = tmp->next;
+			printf("O soldado %s vai esperar ajuda!\n", inicio->nome );
+			free(inicio);
+			inicio = ret;
 		}else{
-			
-			tmp = tmp->next;
+			inicio = inicio->next;
 			c++;
 		}
 	}
