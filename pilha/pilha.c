@@ -47,13 +47,13 @@ void push(Pilha* p, float valor)
 	p->topo++;
 }
 
-float pop()
+float pop(Pilha* p)
 {
-	if(p == NULL) return;
+	if(p == NULL) exit(0);
 	if(p->topo <= 0)
 	{
 		printf("A pilha esta vazia!!\n");
-		return;
+		exit(0);
 	}
 	p->topo--;
 	return p->vet[p->topo];
