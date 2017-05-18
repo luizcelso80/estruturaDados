@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "api.h"
 
+struct simples
+{
+	int info;
+	struct simples *prox;
+};
 struct no{
 	int info;
 	struct no *prox;
@@ -12,13 +17,24 @@ No* inicia(void){
 	return NULL;
 }
 
-No* insere(No* l, int v){
+No* insereFinal(No* l, int v){
 	No* n = (No*) malloc(sizeof(No));
-	n->info = v;
-	n->prox = l;
-	n->ant = NULL;
-	if(l != NULL) l->ant = n;
-	return n;
+	if(l == NULL){
+		n->info = v;
+		n->prox = NULL;
+		n->ant = NULL;
+		l = n;
+	}
+	No* tmp = l;
+	while(tmp != NULL){
+		if(tmp->prox == NULL){
+			n->info = v;
+			n->prox = NULL;
+			n->ant = tmp;
+			tmp->prox = n;
+		}
+	}
+	return l;
 }
 
 void imprime(No* l){
