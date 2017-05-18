@@ -47,7 +47,7 @@ void push(Pilha* p, float valor)
 	p->topo++;
 }
 
-float pop(Pilha* p)
+float pop()
 {
 	if(p == NULL) return;
 	if(p->topo <= 0)
